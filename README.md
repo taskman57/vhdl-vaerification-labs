@@ -1,18 +1,25 @@
-# VHDL Verification Labs
+# VHDL Verification Lab
 
-A structured collection of hands-on VHDL verification projects designed to teach verification methodology through progressively more advanced examples.
+Practical VHDL verification lab using GHDL and GTKWave to learn verification methodology through real FPGA modules-
+such as counters, SPI, divider, and AXI-Lite designs.
 
-The repository starts with simple directed verification and evolves toward reusable verification infrastructure, scoreboards, BFMs, transaction-level verification, protocol verification, regression testing, and constrained-random methodologies.
+---
 
-Each project contains:
+## Objective
 
-- A Design Under Test (DUT)
-- Multiple verification environments
+The goal of this repository is to learn FPGA verification methodology through hands-on projects rather than relying-
+on commercial simulators or advanced verification frameworks.
+
+Topics explored include:
+
 - Self-checking testbenches
-- Documentation of verification concepts
-- Progressive methodology improvements
-
-The goal is to demonstrate how industrial verification environments evolve while remaining entirely within the VHDL ecosystem.
+- Assertions
+- Directed testing
+- Bus Functional Models (BFMs)
+- Reference models
+- Regression testing
+- Protocol verification
+- Reusable verification components
 
 ---
 
@@ -26,21 +33,34 @@ Current environment:
 
 ---
 
-### Project 0 - environment Bootstrap
+## Verification Methodology & Concepts
 
-Establish a lightweight environment compatible with GHDL.
+This repository follows a structured verification roadmap designed to teach methodology through progressive hands-on projects. To ensure a deep understanding of the underlying principles—such as the VHDL simulation engine and delta-cycle behavior—the following conceptual documentation is available:
 
-See:
+*   [Simulation Engine Fundamentals](docs/transaction_level_modeling.md)
 
-project0_environment_bootstrap/README.md
+*Additional methodology guides (e.g., Scoreboards, BFM, Functional Coverage) will be added to this section as the repository projects evolve.*
+
+---
 
 ### Project 1 - Counter Verification
 
-Project 1 introduces basic verification of a simple synchronous counter.
+Completed a full verification flow using a simple counter design.
 
-#### Current Status (Commit 1)
+#### Achievements
 
-- Counter DUT implemented
-- One directed testbench implemented (`tb_counter_basic.vhd`)
-- Verification based on assertions and step-by-step checking
-- Waveform inspection using GTKWave
+- Directed verification testbench implemented
+- Procedure-based automated self-checking testbench implemented
+- Session-based error tracking signal added (`error_detected`)
+- Repeated verification sessions supported
+- Introduction of reusable checker concept
+
+#### Learning Outcome
+
+This project demonstrates the evolution from basic directed verification to scalable self-checking testbench design.
+
+---
+
+#### Status
+
+✔ Completed
