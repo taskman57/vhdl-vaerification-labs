@@ -33,3 +33,14 @@ Establish a lightweight environment compatible with GHDL.
 See:
 
 project0_environment_bootstrap/README.md
+
+### Project 1 - Counter Verification
+
+Project 1 introduces basic verification of a simple synchronous counter.
+
+#### Current Status (Commit 1)
+
+- Counter DUT implemented
+- One directed testbench implemented (`tb_counter_basic.vhd`)
+- Verification based on assertions and step-by-step checking
+- Waveform inspection using GTKWave
