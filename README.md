@@ -13,3 +13,23 @@ Each project contains:
 - Progressive methodology improvements
 
 The goal is to demonstrate how industrial verification environments evolve while remaining entirely within the VHDL ecosystem.
+
+---
+
+## Toolchain
+
+Current environment:
+
+- GHDL 6.0.0
+- GTKWave
+- VHDL-2008 (limited by GHDL support)
+
+---
+
+### Project 0 - environment Bootstrap
+
+Establish a lightweight environment compatible with GHDL.
+
+See:
+
+project0_environment_bootstrap/README.md

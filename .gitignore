@@ -1,0 +1,44 @@
+# ==========================================
+# GHDL Compilation & Simulation Artifacts
+# ==========================================
+# GHDL library dictionary files
+*.cf
+
+# Object files and binaries (if using GCC/LLVM backends)
+*.o
+*.exe
+*.out
+
+# ==========================================
+# Waveform & Output Data
+# ==========================================
+# GHDL waveform outputs
+*.ghw
+
+# Other common waveform formats (just in case)
+*.vcd
+*.fst
+
+# Simulation log texts (optional, uncomment if you generate logs)
+# *.log
+# *.txt
+
+# ==========================================
+# OS & Environment Defaults
+# ==========================================
+# Windows specific
+Thumbs.db
+desktop.ini
+
+# macOS specific (if you ever clone this on a Mac)
+.DS_Store
+
+# ==========================================
+# Editor & IDE Files
+# ==========================================
+# VS Code workspace settings (optional, remove if you want to share settings)
+.vscode/
+
+# Vim/Emacs temporary files
+*.swp
+*~
