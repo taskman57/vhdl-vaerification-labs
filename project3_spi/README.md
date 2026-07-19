@@ -28,50 +28,34 @@ The DUT intentionally focuses on byte-level transfers. Chip-select control and h
 
 ### Functional Bring-up
 
-File:
-
-`tb_spi_byte_bringup.vhd`
-
-The testbench verifies:
-
-* Basic transmit operation
-* Basic receive operation
-* Waveform-based functional validation
+File: `tb_spi_byte_bringup.vhd`
+The testbench verifies basic transmit/receive and provides waveform-based validation.
 
 ### Directed Self-Checking Verification
 
-File:
-
-`tb_spi_byte_verify.vhd`
-
-The testbench introduces:
-
-* Directed SPI transmit and receive transactions
-* Automatic SPI byte capture
-* Reusable capture procedures
-* Reusable checker procedures (MOSI/MISO)
-* Automatic PASS/FAIL reporting
+File: `tb_spi_byte_verify.vhd`
+Introduces reusable capture/checker procedures and automatic PASS/FAIL reporting.
 
 ### Corner-Case Verification
 
-File:
-
-`tb_spi_byte_corner.vhd`
-
-The testbench validates robustness against edge-case data patterns (e.g., alternating patterns, boundary values, nibble boundaries).
+File: `tb_spi_byte_corner.vhd`
+Validates robustness against edge-case data patterns (e.g., alternating patterns, boundaries).
 
 ### Scoreboard Verification
 
-File:
+File: `tb_spi_byte_scoreboard.vhd`
+Introduces transaction-based scoreboarding and decoupled stimulus/checking.
 
-`tb_spi_byte_scoreboard.vhd`
+### Randomized Verification
+
+File: `tb_spi_byte_random.vhd`
 
 The testbench introduces:
 
-* Transaction recording (expected vs. actual)
-* Non-real-time verification
-* Separation of stimulus and checking phases
-* Consolidated PASS/FAIL summary reporting
+* Random stimulus generation using `IEEE.math_real`
+* Configurable test iterations via `NUM_TESTS_G`
+* Statistical coverage increase
+* Automated verification of random transaction sequences
 
 ---
 
@@ -80,40 +64,33 @@ The testbench introduces:
 The verification environment verifies:
 
 * Reset behavior
-* SPI byte transmission
-* SPI byte reception
+* SPI byte transmission/reception
 * Correct serial bit ordering
-* Corner-case behavior
-* Transaction-based scoreboarding
+* Corner-case and transaction-based scoreboarding
+* **Randomized stimulus and protocol robustness**
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the progression from functional simulation toward protocol-oriented verification.
+This project demonstrates the progression from functional simulation toward comprehensive, industry-standard verification.
 
-The verification flow introduces:
+The verification flow includes:
 
 * Directed verification
 * Self-checking testbenches
-* Capture procedures
-* Checker procedures
+* Capture and checker procedures
 * Scoreboards
+* **Randomized constraint-based verification**
 
-The verification architecture separates:
-
-* Transaction generation
-* DUT observation
-* Result checking
-
-This structure serves as the reusable verification foundation for future SPI-based projects.
+The architecture remains decoupled, separating generation, observation, and checking.
 
 ---
 
 ## Status
 
-✔ Commit 4 Completed
+✔ Commit 5 Completed
 
-Scoreboard verification completed.
+Randomized verification completed.
 
 Next milestone: reusable SPI slave Bus Functional Model (BFM).
