@@ -113,35 +113,22 @@ Randomized verification stage added.
 
 ### Project 3 - SPI Byte Engine Verification
 
-The SPI verification project introduces protocol-oriented verification using a reusable SPI byte transfer engine.
-
-The verification environment has evolved from manual bring-up to fully automated, randomized verification.
+The SPI verification project established a robust, reusable protocol verification framework.
 
 #### Achievements
+- Functional verification and bring-up
+- Directed and automated self-checking testbenches
+- Transactional scoreboarding architecture
+- Randomized constraint-based verification (CRV)
+- **Robustness and stress verification (Reset, Flow Control, Pulse-width)**
 
-- SPI byte transfer engine functionally verified
-- Directed transmit/receive verification completed
-- Reusable verification procedures introduced
-- Scoreboard-based checking implemented
-- **Randomized stimulus generation (CRV) implemented**
-
-#### Verification Concepts Introduced
-
-* Directed verification
-* Self-checking testbenches
-* Capture and checker procedures
-* Corner-case verification
+#### Verification Concepts
+* Directed Verification
 * Scoreboarding
-* **Randomized verification (CRV)**
-
-#### Learning Outcome
-
-This project demonstrates the transition from simple functional simulation toward robust, automated, and randomized protocol verification, establishing a professional foundation for reusable SPI-based projects.
+* Randomized Stimulus
+* **Robustness/Negative Testing**
 
 #### Status
+✔ **Project 3 Completed**
 
-✔ Commit 5 Completed
-
-Randomized verification completed.
-
-Next milestone: reusable SPI slave Bus Functional Model (BFM).
+The SPI engine is verified and robust. Ready to proceed to Project 4: SPI Slave BFM integration.

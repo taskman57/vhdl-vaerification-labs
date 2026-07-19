@@ -4,93 +4,55 @@
 
 Verify a reusable SPI byte transfer engine using progressively more advanced verification techniques.
 
-The project introduces protocol-oriented verification concepts and establishes a reusable foundation for verifying higher-level SPI controllers.
+The project establishes a professional, reusable foundation for verifying SPI-based controllers.
 
 ---
 
 ## DUT Overview
 
-The DUT is a single-byte SPI transfer engine.
-
-Features:
-
-* Single-byte SPI transmit and receive
-* Simultaneous transmit and receive operation
-* LSB-first transmission
-* External transaction control through `start_i`
-* Busy and completion indication
-
-The DUT intentionally focuses on byte-level transfers. Chip-select control and higher-level register transactions are implemented by upper protocol layers.
+The DUT is a single-byte SPI transfer engine supporting simultaneous transmit/receive, LSB-first transmission, and external flow control via `start_i`.
 
 ---
 
 ## Verification Approach
 
 ### Functional Bring-up
-
-File: `tb_spi_byte_bringup.vhd`
-The testbench verifies basic transmit/receive and provides waveform-based validation.
+* `tb_spi_byte_bringup.vhd`: Basic waveform-based validation.
 
 ### Directed Self-Checking Verification
-
-File: `tb_spi_byte_verify.vhd`
-Introduces reusable capture/checker procedures and automatic PASS/FAIL reporting.
+* `tb_spi_byte_verify.vhd`: Reusable capture/checker procedures with automatic pass/fail reporting.
 
 ### Corner-Case Verification
-
-File: `tb_spi_byte_corner.vhd`
-Validates robustness against edge-case data patterns (e.g., alternating patterns, boundaries).
+* `tb_spi_byte_corner.vhd`: Stress tests for edge-case data patterns.
 
 ### Scoreboard Verification
-
-File: `tb_spi_byte_scoreboard.vhd`
-Introduces transaction-based scoreboarding and decoupled stimulus/checking.
+* `tb_spi_byte_scoreboard.vhd`: Decoupled transaction recording and checking.
 
 ### Randomized Verification
+* `tb_spi_byte_random.vhd`: Constraint-based random testing for statistical coverage.
 
-File: `tb_spi_byte_random.vhd`
-
-The testbench introduces:
-
-* Random stimulus generation using `IEEE.math_real`
-* Configurable test iterations via `NUM_TESTS_G`
-* Statistical coverage increase
-* Automated verification of random transaction sequences
-
----
-
-## Verification Objectives
-
-The verification environment verifies:
-
-* Reset behavior
-* SPI byte transmission/reception
-* Correct serial bit ordering
-* Corner-case and transaction-based scoreboarding
-* **Randomized stimulus and protocol robustness**
+### Robustness Verification
+* `tb_spi_byte_robust.vhd`: Validates system stability under stress conditions
+    * **Reset Abort**: Verifies engine recovery after reset during an active transfer
+    * **Busy/Flow Control**: Validates behavior when `start_i` is asserted during `busy_o`
+    * **Back-to-Back Transfers**: Ensures continuity between rapid transactions
+    * **Pulse-Width Variation**: Tests sensitivity of control signals and consistency of `done_o`
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the progression from functional simulation toward comprehensive, industry-standard verification.
+This project completes the transition from simple functional testing to a comprehensive verification environment:
 
-The verification flow includes:
-
-* Directed verification
-* Self-checking testbenches
-* Capture and checker procedures
-* Scoreboards
-* **Randomized constraint-based verification**
-
-The architecture remains decoupled, separating generation, observation, and checking.
+*   **Foundation**: Directed and self-checking testbenches.
+*   **Architecture**: Transaction-based scoreboarding.
+*   **Quality**: Constraint-random verification.
+*   **Hardening**: Robustness and protocol stress testing.
 
 ---
 
 ## Status
 
-✔ Commit 5 Completed
+✔ **Project 3 Completed**
 
-Randomized verification completed.
-
-Next milestone: reusable SPI slave Bus Functional Model (BFM).
+All verification phases passed. System is ready for Project 4: SPI slave Bus Functional Model (BFM).
