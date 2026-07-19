@@ -67,7 +67,7 @@ This project demonstrates the evolution from basic directed verification to scal
 
 ### Project 2 - Sequential Truncated Restoring Divider
 
-The verification environment uses a reference model, scoreboard, and data-driven stimulus approach to verify a sequential divider implementation.
+The verification environment uses reference models, scoreboards, and data-driven stimulus techniques to verify a sequential divider implementation.
 
 #### Achievements
 
@@ -76,7 +76,9 @@ The verification environment uses a reference model, scoreboard, and data-driven
 * Implemented mini scoreboard infrastructure
 * Added pass/fail tracking and simulation summaries
 * Introduced data-driven test vector execution
-* Added corner-case verification scenarios
+* Added arithmetic corner-case verification
+* Added robustness verification
+* Verified reset recovery behavior during active operations
 
 #### Verification Concepts Introduced
 
@@ -85,6 +87,8 @@ The verification environment uses a reference model, scoreboard, and data-driven
 * Self-checking testbenches
 * Data-driven verification
 * Corner-case testing
+* Robustness verification
+* Reset recovery verification
 
 #### Learning Outcome
 
@@ -97,7 +101,7 @@ The testbench architecture separates:
 * Result checking
 * Verification scenarios
 
-This separation allows verification complexity to grow without requiring a complete testbench rewrite.
+This separation allows verification complexity to increase without requiring major changes to the verification infrastructure.
 
 #### Status
 

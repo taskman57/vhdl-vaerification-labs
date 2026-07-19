@@ -25,7 +25,7 @@ The divider returns only the quotient and intentionally discards the remainder.
 
 ## Verification Approach
 
-### Reference-Model Testbench
+### Reference-Model Verification
 
 File:
 
@@ -74,6 +74,32 @@ Features:
 
 ---
 
+### Robustness Verification
+
+File:
+
+`tb_divider_robustness.vhd`
+
+The testbench extends verification beyond arithmetic corner cases and focuses on DUT robustness.
+
+Features:
+
+* Quotient-width boundary verification
+* Maximum divisor verification
+* Dividend-less-than-divisor boundary verification
+* Reset recovery testing during an active division operation
+
+Boundary scenarios include:
+
+* Smallest non-zero quotient
+* Maximum supported quotient value
+* Maximum supported divisor value
+* Dividend smaller than divisor
+
+The reset recovery test verifies that an active division operation is correctly aborted and that the DUT can successfully process a new transaction after reset.
+
+---
+
 ## Verification Objectives
 
 The verification environment checks:
@@ -82,18 +108,34 @@ The verification environment checks:
 * Start/ready handshake operation
 * Quotient correctness
 * Multiple sequential transactions
-* Corner-case input combinations
-* Automated verification reporting
+* Arithmetic corner-case scenarios
+* Quotient-width boundary conditions
+* Divisor boundary conditions
+* Reset recovery during an active division operation
+* Automated result reporting through a reusable scoreboard
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the progression from basic checking toward structured verification methodology.
+This project demonstrates the progression from simple directed verification toward a structured verification environment.
 
-The reference model provides independent expected behavior, while the scoreboard collects and summarizes verification results.
+The verification flow introduces:
 
-The data-driven approach separates verification scenarios from execution logic, providing a foundation for scalable testbench development.
+* Reference-model based checking
+* Reusable scoreboard concepts
+* Data-driven test execution
+* Corner-case verification
+* Robustness verification
+
+The testbench architecture separates:
+
+* DUT interaction
+* Expected-result generation
+* Result checking
+* Verification scenarios
+
+This separation improves scalability and maintainability while providing a foundation for future verification concepts such as transaction abstraction, BFMs, and protocol verification.
 
 ---
 
@@ -101,7 +143,7 @@ The data-driven approach separates verification scenarios from execution logic, 
 
 ✔ Commit 1 Completed
 
-Reference-model based verification implemented and validated.
+Reference-model verification implemented and validated.
 
 ✔ Commit 2 Completed
 
@@ -109,4 +151,8 @@ Mini scoreboard implemented with pass/fail tracking and verification summary rep
 
 ✔ Commit 3 Completed
 
-Data-driven corner-case verification implemented with expanded divider test coverage.
+Data-driven corner-case verification implemented with expanded arithmetic test coverage.
+
+✔ Commit 4 Completed
+
+Robustness verification implemented, including boundary-condition testing and reset recovery verification.
