@@ -67,33 +67,37 @@ This project demonstrates the evolution from basic directed verification to scal
 
 ### Project 2 - Sequential Truncated Restoring Divider
 
-Verification of a sequential divider using reference-model and scoreboard-based techniques.
+The verification environment uses a reference model, scoreboard, and data-driven stimulus approach to verify a sequential divider implementation.
 
 #### Achievements
 
-* Implemented a reference-model based verification environment
-* Automatically calculated expected quotient values
-* Compared DUT results against independently generated reference results
-* Added a reusable mini scoreboard
-* Collected pass/fail statistics across multiple test cases
-* Extended verification with corner-case test vectors
+* Implemented reference-model based verification
+* Added automatic expected-result generation
+* Implemented mini scoreboard infrastructure
+* Added pass/fail tracking and simulation summaries
+* Introduced data-driven test vector execution
+* Added corner-case verification scenarios
 
-#### Verification Topics Introduced
+#### Verification Concepts Introduced
 
 * Reference models
-* Self-checking verification
 * Scoreboards
+* Self-checking testbenches
+* Data-driven verification
 * Corner-case testing
-* Result collection and reporting
 
 #### Learning Outcome
 
-This project introduces two fundamental verification concepts:
+This project demonstrates the evolution from individual directed checks toward a structured verification environment.
 
-1. A reference model for generating expected DUT behavior independently of the implementation.
-2. A scoreboard for collecting verification results and producing a simulation summary.
+The testbench architecture separates:
 
-These techniques form the foundation for more advanced protocol and system-level verification environments.
+* DUT interaction
+* Expected-result generation
+* Result checking
+* Verification scenarios
+
+This separation allows verification complexity to grow without requiring a complete testbench rewrite.
 
 #### Status
 

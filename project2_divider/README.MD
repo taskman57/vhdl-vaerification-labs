@@ -34,48 +34,66 @@ File:
 The testbench:
 
 * Applies divider transactions
-* Calculates the expected quotient mathematically
+* Calculates expected quotient values independently
 * Waits for operation completion
-* Compares DUT outputs against the reference model
-* Reports mismatches automatically
+* Compares DUT output against the reference model
 
-### Scoreboard-Based Testbench
+---
+
+### Scoreboard-Based Verification
 
 File:
 
 `tb_divider_mini_scoreboard.vhd`
 
-The testbench extends the reference-model approach by:
+The testbench introduces a reusable mini scoreboard.
 
-* Recording pass/fail results
-* Reporting individual test outcomes
-* Continuing execution after failures
-* Producing a final verification summary
+Features:
 
-This introduces the basic scoreboard concept used in modern verification environments.
+* PASS/FAIL tracking
+* Per-test result reporting
+* Verification summary generation
+* Continued execution after failures
+
+---
+
+### Data-Driven Corner-Case Verification
+
+File:
+
+`tb_divider_corner_cases.vhd`
+
+The testbench extends the scoreboard approach using a test-vector based stimulus model.
+
+Features:
+
+* Separation of test data and execution flow
+* Reusable test execution loop
+* Boundary-condition verification scenarios
+* Automated result collection
 
 ---
 
 ## Verification Objectives
 
-The following behaviors are verified:
+The verification environment checks:
 
 * Reset behavior
 * Start/ready handshake operation
 * Quotient correctness
 * Multiple sequential transactions
-* Representative corner-case scenarios
-* Verification result collection and reporting
+* Corner-case input combinations
+* Automated verification reporting
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the progression from direct result checking to structured verification methodology.
+This project demonstrates the progression from basic checking toward structured verification methodology.
 
-The reference model provides an independent source of expected behavior, while the scoreboard collects and summarizes verification results across the entire test run.
+The reference model provides independent expected behavior, while the scoreboard collects and summarizes verification results.
 
-Together, these concepts form the basis for scalable verification environments used in FPGA and ASIC development.
+The data-driven approach separates verification scenarios from execution logic, providing a foundation for scalable testbench development.
 
 ---
 
@@ -87,21 +105,8 @@ Reference-model based verification implemented and validated.
 
 ✔ Commit 2 Completed
 
-Mini scoreboard implemented with pass/fail tracking, result reporting, and corner-case verification scenarios.
+Mini scoreboard implemented with pass/fail tracking and verification summary reporting.
 
----
+✔ Commit 3 Completed
 
-## Additional Verification Features
-
-The scoreboard-based testbench:
-
-* Tracks pass and fail counts
-* Reports per-test PASS/FAIL messages
-* Continues execution after failures
-* Produces a final verification summary
-
-File:
-
-`tb_divider_mini_scoreboard.vhd`
-
-This introduces the fundamental scoreboard concept that will later be expanded for protocol-oriented verification environments.
+Data-driven corner-case verification implemented with expanded divider test coverage.
