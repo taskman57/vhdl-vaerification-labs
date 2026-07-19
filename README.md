@@ -64,3 +64,32 @@ This project demonstrates the evolution from basic directed verification to scal
 #### Status
 
 ✔ Completed
+
+### Project 2 - Sequential Truncated Restoring Divider
+
+The verification environment employs a reference model to independently calculate the expected quotient and compare it against DUT outputs.
+
+#### Objectives
+
+* Introduce reference-model based verification
+* Compare DUT results against mathematically calculated expected results
+* Verify correct operation across representative input combinations
+* Prepare the foundation for reusable scoreboards
+* Introduce corner-case verification
+
+#### Planned Verification Topics
+
+* Start/ready handshake verification
+* Quotient correctness checking
+* Reference model implementation
+* Corner-case testing
+* Mini scoreboard development
+
+#### Learning Outcome
+
+This project introduces the concept of a reference model, where expected DUT behavior is calculated independently and automatically-
+compared against actual DUT outputs. This represents the first step toward scalable verification environments.
+
+#### Status
+
+🚧 In Progress
