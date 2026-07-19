@@ -80,6 +80,7 @@ The environment verifies arithmetic correctness, boundary conditions, reset reco
 - Robustness testing performed
 - Divide-by-zero handling verified
 - Multiple checker paths implemented for normal and error transactions
+- Randomized reference-model verification added with output-width aware checking
 
 #### Verification Concepts Introduced
 
@@ -107,3 +108,5 @@ This separation allows verification complexity to increase without requiring maj
 #### Status
 
 ✔ Completed
+
+Randomized verification stage added.

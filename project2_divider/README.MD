@@ -19,8 +19,15 @@ Features:
 * Ready indication (`q_rdy_o`)
 * Quotient output (`quot_o`)
 
+Configuration:
+
+* Numerator width: 34-bit
+* Denominator width: 10-bit
+* Quotient output width: 24-bit
+
 The divider returns only the quotient and intentionally discards the remainder.
 
+The limited 24-bit quotient width is intentional. Mathematical quotient values larger than 24 bits cannot be represented by the DUT output.
 ---
 
 ## Verification Approach
@@ -99,6 +106,23 @@ The testbench verifies:
 
 ---
 
+### Randomized Reference-Model Verification
+
+File:
+
+`tb_divider_random.vhd`
+
+The testbench introduces:
+
+* Random transaction generation
+* Independent arithmetic reference model
+* Automatic scoreboard comparison
+* Wide-value debug reporting for failing cases
+
+The reference model compares DUT output only when the mathematical quotient fits within the 24-bit DUT output range.
+
+---
+
 ## Verification Objectives
 
 The verification environment verifies:
@@ -158,3 +182,7 @@ Data-driven corner-case verification implemented with expanded arithmetic test c
 ✔ Commit 4 Completed
 
 Robustness verification implemented, including boundary-condition testing and reset recovery verification.
+
+✔ Commit 5 Completed
+
+Randomized reference-model verification implemented with quotient-width aware checking.
