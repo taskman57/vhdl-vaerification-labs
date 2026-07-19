@@ -51,7 +51,6 @@ The testbench introduces:
 * Reusable capture procedures
 * Reusable checker procedures (MOSI/MISO)
 * Automatic PASS/FAIL reporting
-* Independent verification of transmit and receive paths
 
 ### Corner-Case Verification
 
@@ -59,12 +58,20 @@ File:
 
 `tb_spi_byte_corner.vhd`
 
-The testbench validates robustness against edge-case data patterns:
+The testbench validates robustness against edge-case data patterns (e.g., alternating patterns, boundary values, nibble boundaries).
 
-* Alternating patterns (0x55, 0xAA)
-* Boundary values (0x00, 0xFF)
-* Single-bit transitions (0x01, 0x80)
-* Nibble boundaries (0x0F, 0xF0)
+### Scoreboard Verification
+
+File:
+
+`tb_spi_byte_scoreboard.vhd`
+
+The testbench introduces:
+
+* Transaction recording (expected vs. actual)
+* Non-real-time verification
+* Separation of stimulus and checking phases
+* Consolidated PASS/FAIL summary reporting
 
 ---
 
@@ -76,8 +83,8 @@ The verification environment verifies:
 * SPI byte transmission
 * SPI byte reception
 * Correct serial bit ordering
-* Self-checking verification
-* **Corner-case behavior**
+* Corner-case behavior
+* Transaction-based scoreboarding
 
 ---
 
@@ -91,7 +98,7 @@ The verification flow introduces:
 * Self-checking testbenches
 * Capture procedures
 * Checker procedures
-* **Corner-case and robustness testing**
+* Scoreboards
 
 The verification architecture separates:
 
@@ -105,8 +112,8 @@ This structure serves as the reusable verification foundation for future SPI-bas
 
 ## Status
 
-✔ Commit 3 Completed
+✔ Commit 4 Completed
 
-Corner-case verification completed.
+Scoreboard verification completed.
 
 Next milestone: reusable SPI slave Bus Functional Model (BFM).

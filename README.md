@@ -115,7 +115,7 @@ Randomized verification stage added.
 
 The SPI verification project introduces protocol-oriented verification using a reusable SPI byte transfer engine.
 
-The verification environment begins with functional bring-up and evolves into self-checking verification and robustness testing.
+The verification environment begins with functional bring-up and evolves into automated, scoreboard-based verification.
 
 #### Achievements
 
@@ -124,7 +124,8 @@ The verification environment begins with functional bring-up and evolves into se
 - Directed receive-path verification completed
 - Initial reusable verification procedures introduced
 - Self-checking transmit/receive verification implemented
-- **Corner-case and stress verification completed**
+- Corner-case and stress verification completed
+- **Transactional scoreboarding implemented**
 
 #### Verification Concepts Introduced
 
@@ -132,16 +133,17 @@ The verification environment begins with functional bring-up and evolves into se
 * Self-checking testbenches
 * Capture procedures
 * Checker procedures
-* **Corner-case verification**
+* Corner-case verification
+* **Scoreboarding**
 
 #### Learning Outcome
 
-This project demonstrates the transition from functional simulation toward structured protocol verification, establishing a separation between transaction generation, DUT observation, and result checking.
+This project demonstrates the transition from functional simulation toward structured protocol verification, establishing a clean separation between transaction generation, DUT observation, and result checking.
 
 #### Status
 
-✔ Commit 3 Completed
+✔ Commit 4 Completed
 
-Corner-case verification completed.
+Scoreboard verification completed.
 
 Next milestone: reusable SPI slave Bus Functional Model (BFM).
