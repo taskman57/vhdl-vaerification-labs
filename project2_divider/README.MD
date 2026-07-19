@@ -2,9 +2,9 @@
 
 ## Goal
 
-Verify a sequential divider using a reference-model based verification approach.
+Verify a sequential divider using a reference-model based verification methodology and introduce the fundamentals of scoreboard-driven verification.
 
-This project introduces the concept of computing expected DUT behavior independently and automatically comparing it against the actual DUT output.
+The objective is to independently calculate expected results, compare them against DUT outputs, and collect verification statistics across multiple test scenarios.
 
 ---
 
@@ -34,10 +34,25 @@ File:
 The testbench:
 
 * Applies divider transactions
-* Computes the expected quotient mathematically
-* Waits for divider completion
-* Compares DUT output against the reference model
+* Calculates the expected quotient mathematically
+* Waits for operation completion
+* Compares DUT outputs against the reference model
 * Reports mismatches automatically
+
+### Scoreboard-Based Testbench
+
+File:
+
+`tb_divider_mini_scoreboard.vhd`
+
+The testbench extends the reference-model approach by:
+
+* Recording pass/fail results
+* Reporting individual test outcomes
+* Continuing execution after failures
+* Producing a final verification summary
+
+This introduces the basic scoreboard concept used in modern verification environments.
 
 ---
 
@@ -46,20 +61,21 @@ The testbench:
 The following behaviors are verified:
 
 * Reset behavior
-* Start operation
-* Ready signal generation
+* Start/ready handshake operation
 * Quotient correctness
 * Multiple sequential transactions
+* Representative corner-case scenarios
+* Verification result collection and reporting
 
 ---
 
 ## Learning Outcome
 
-This project introduces reference-model based verification.
+This project demonstrates the progression from direct result checking to structured verification methodology.
 
-Unlike directed testing, expected results are calculated automatically rather than being hard-coded into assertions.
+The reference model provides an independent source of expected behavior, while the scoreboard collects and summarizes verification results across the entire test run.
 
-This represents the first step toward scalable verification environments and future scoreboard-based verification.
+Together, these concepts form the basis for scalable verification environments used in FPGA and ASIC development.
 
 ---
 
@@ -67,4 +83,25 @@ This represents the first step toward scalable verification environments and fut
 
 ✔ Commit 1 Completed
 
-Reference-model verification implemented and validated.
+Reference-model based verification implemented and validated.
+
+✔ Commit 2 Completed
+
+Mini scoreboard implemented with pass/fail tracking, result reporting, and corner-case verification scenarios.
+
+---
+
+## Additional Verification Features
+
+The scoreboard-based testbench:
+
+* Tracks pass and fail counts
+* Reports per-test PASS/FAIL messages
+* Continues execution after failures
+* Produces a final verification summary
+
+File:
+
+`tb_divider_mini_scoreboard.vhd`
+
+This introduces the fundamental scoreboard concept that will later be expanded for protocol-oriented verification environments.

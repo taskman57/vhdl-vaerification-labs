@@ -67,29 +67,34 @@ This project demonstrates the evolution from basic directed verification to scal
 
 ### Project 2 - Sequential Truncated Restoring Divider
 
-The verification environment employs a reference model to independently calculate the expected quotient and compare it against DUT outputs.
+Verification of a sequential divider using reference-model and scoreboard-based techniques.
 
-#### Objectives
+#### Achievements
 
-* Introduce reference-model based verification
-* Compare DUT results against mathematically calculated expected results
-* Verify correct operation across representative input combinations
-* Prepare the foundation for reusable scoreboards
-* Introduce corner-case verification
+* Implemented a reference-model based verification environment
+* Automatically calculated expected quotient values
+* Compared DUT results against independently generated reference results
+* Added a reusable mini scoreboard
+* Collected pass/fail statistics across multiple test cases
+* Extended verification with corner-case test vectors
 
-#### Planned Verification Topics
+#### Verification Topics Introduced
 
-* Start/ready handshake verification
-* Quotient correctness checking
-* Reference model implementation
+* Reference models
+* Self-checking verification
+* Scoreboards
 * Corner-case testing
-* Mini scoreboard development
+* Result collection and reporting
 
 #### Learning Outcome
 
-This project introduces the concept of a reference model, where expected DUT behavior is calculated independently and automatically-
-compared against actual DUT outputs. This represents the first step toward scalable verification environments.
+This project introduces two fundamental verification concepts:
+
+1. A reference model for generating expected DUT behavior independently of the implementation.
+2. A scoreboard for collecting verification results and producing a simulation summary.
+
+These techniques form the foundation for more advanced protocol and system-level verification environments.
 
 #### Status
 
-🚧 In Progress
+✔ Completed
