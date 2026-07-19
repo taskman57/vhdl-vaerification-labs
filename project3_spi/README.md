@@ -53,6 +53,19 @@ The testbench introduces:
 * Automatic PASS/FAIL reporting
 * Independent verification of transmit and receive paths
 
+### Corner-Case Verification
+
+File:
+
+`tb_spi_byte_corner.vhd`
+
+The testbench validates robustness against edge-case data patterns:
+
+* Alternating patterns (0x55, 0xAA)
+* Boundary values (0x00, 0xFF)
+* Single-bit transitions (0x01, 0x80)
+* Nibble boundaries (0x0F, 0xF0)
+
 ---
 
 ## Verification Objectives
@@ -64,6 +77,7 @@ The verification environment verifies:
 * SPI byte reception
 * Correct serial bit ordering
 * Self-checking verification
+* **Corner-case behavior**
 
 ---
 
@@ -77,6 +91,7 @@ The verification flow introduces:
 * Self-checking testbenches
 * Capture procedures
 * Checker procedures
+* **Corner-case and robustness testing**
 
 The verification architecture separates:
 
@@ -90,8 +105,8 @@ This structure serves as the reusable verification foundation for future SPI-bas
 
 ## Status
 
-✔ Commit 2 Completed
+✔ Commit 3 Completed
 
-Directed self-checking verification completed.
+Corner-case verification completed.
 
 Next milestone: reusable SPI slave Bus Functional Model (BFM).
