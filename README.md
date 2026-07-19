@@ -110,3 +110,32 @@ This separation allows verification complexity to increase without requiring maj
 ✔ Completed
 
 Randomized verification stage added.
+
+### Project 3 - SPI Byte Engine Verification
+
+The SPI verification project introduces protocol-oriented verification using a reusable SPI byte transfer engine.
+
+The verification environment begins with functional bring-up.
+
+#### Achievements
+
+- SPI byte transfer engine functionally verified
+- Directed transmit-path verification completed
+- Directed receive-path verification completed
+
+#### Verification Concepts Introduced
+
+* Directed verification
+* Waveform-based functional validation
+
+#### Learning Outcome
+
+This project begins the transition from functional simulation toward structured protocol verification.
+
+#### Status
+
+◐ In Progress
+
+Functional bring-up completed.
+
+Next milestone: Directed self-checking verification and reusable verification procedures.
