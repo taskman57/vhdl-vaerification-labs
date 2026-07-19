@@ -2,9 +2,9 @@
 
 ## Goal
 
-Verify a reusable SPI byte transfer engine using functional bring-up techniques.
+Verify a reusable SPI byte transfer engine using progressively more advanced verification techniques.
 
-The project establishes a baseline for verifying the SPI protocol.
+The project introduces protocol-oriented verification concepts and establishes a reusable foundation for verifying higher-level SPI controllers.
 
 ---
 
@@ -28,7 +28,7 @@ The DUT intentionally focuses on byte-level transfers. Chip-select control and h
 
 ### Functional Bring-up
 
-File: 
+File:
 
 `tb_spi_byte_bringup.vhd`
 
@@ -37,6 +37,21 @@ The testbench verifies:
 * Basic transmit operation
 * Basic receive operation
 * Waveform-based functional validation
+
+### Directed Self-Checking Verification
+
+File:
+
+`tb_spi_byte_verify.vhd`
+
+The testbench introduces:
+
+* Directed SPI transmit and receive transactions
+* Automatic SPI byte capture
+* Reusable capture procedures
+* Reusable checker procedures (MOSI/MISO)
+* Automatic PASS/FAIL reporting
+* Independent verification of transmit and receive paths
 
 ---
 
@@ -48,26 +63,35 @@ The verification environment verifies:
 * SPI byte transmission
 * SPI byte reception
 * Correct serial bit ordering
+* Self-checking verification
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the initial functional simulation of the SPI protocol.
+This project demonstrates the progression from functional simulation toward protocol-oriented verification.
 
-The verification architecture is intended to separate:
+The verification flow introduces:
+
+* Directed verification
+* Self-checking testbenches
+* Capture procedures
+* Checker procedures
+
+The verification architecture separates:
 
 * Transaction generation
 * DUT observation
+* Result checking
 
-This structure will serve as the foundation for future advanced verification stages.
+This structure serves as the reusable verification foundation for future SPI-based projects.
 
 ---
 
 ## Status
 
-✔ Commit 1 Completed
+✔ Commit 2 Completed
 
-Functional bring-up completed.
+Directed self-checking verification completed.
 
-Next milestone: Directed self-checking verification, reusable capture/checker procedures, and automatic PASS/FAIL reporting.
+Next milestone: reusable SPI slave Bus Functional Model (BFM).
