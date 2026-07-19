@@ -15,7 +15,8 @@ entity trunc_restore_div is
         num_i       : in STD_LOGIC_VECTOR(NUMERATOR_WIDTH_G-1 downto 0);
         dnum_i      : in STD_LOGIC_VECTOR(DENUMERATOR_WIDTH_G-1 downto 0);
         quot_o      : out STD_LOGIC_VECTOR(QUOTIENT_WIDTH_G-1 downto 0);
-        q_rdy_o     : out std_logic
+        q_rdy_o     : out std_logic;
+        div_err_o   : out std_logic
     );
 end trunc_restore_div;
 
@@ -40,18 +41,27 @@ begin
                 divisor_s   <= (others => '0');
                 div_tsk_s   <= 0;
                 q_rdy_o     <= '0';
+                div_err_o   <= '0';
+                div_itr_s   <= 0;
             else
                 q_rdy_o     <= '0';
+                div_err_o   <= '0';
                 case div_tsk_s is
                     when 0  =>
                         if ena_i = '1' then
-                            num_tmp_s   <= unsigned('0' & num_i(NUMERATOR_WIDTH_G-1 downto QUOTIENT_WIDTH_G));
-                            rem_tmp_s   <= unsigned(num_i(QUOTIENT_WIDTH_G-1 downto 0));
-                            divisor_s   <= unsigned(dnum_i);
-                            quot_s      <= (others => '0');
-                            div_tsk_s   <= 1;
-                            div_itr_s   <= 0;
+                            if unsigned(dnum_i) = 0 then
+                                q_rdy_o     <= '1';
+                                div_err_o   <= '1';
+                                quot_o      <= (others => '0');
+                            else
+                                num_tmp_s   <= unsigned('0' & num_i(NUMERATOR_WIDTH_G-1 downto QUOTIENT_WIDTH_G));
+                                rem_tmp_s   <= unsigned(num_i(QUOTIENT_WIDTH_G-1 downto 0));
+                                divisor_s   <= unsigned(dnum_i);
+                                div_tsk_s   <= 1;
+                            end if;
                         end if;
+                        div_itr_s   <= 0;
+                        quot_s      <= (others => '0');
                     when 1  =>
                         quot_s(0) <= '0';
                         if num_tmp_s >= divisor_s then

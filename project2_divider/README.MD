@@ -25,6 +25,8 @@ The divider returns only the quotient and intentionally discards the remainder.
 
 ## Verification Approach
 
+The divider verification environment consists of multiple verification stages.
+
 ### Reference-Model Verification
 
 File:
@@ -37,6 +39,7 @@ The testbench:
 * Calculates expected quotient values independently
 * Waits for operation completion
 * Compares DUT output against the reference model
+* Reports mismatches automatically
 
 ---
 
@@ -46,31 +49,26 @@ File:
 
 `tb_divider_mini_scoreboard.vhd`
 
-The testbench introduces a reusable mini scoreboard.
+The testbench introduces:
 
-Features:
-
-* PASS/FAIL tracking
-* Per-test result reporting
-* Verification summary generation
-* Continued execution after failures
+* Reusable checker procedures
+* Pass/fail counters
+* Automated verification summaries
+* Separation between stimulus and checking logic
 
 ---
 
-### Data-Driven Corner-Case Verification
+### Corner-Case Verification
 
 File:
 
 `tb_divider_corner_cases.vhd`
 
-The testbench extends the scoreboard approach using a test-vector based stimulus model.
+The testbench verifies:
 
-Features:
-
-* Separation of test data and execution flow
-* Reusable test execution loop
-* Boundary-condition verification scenarios
-* Automated result collection
+* Boundary operand values
+* Small and large division cases
+* Quotient behavior across representative scenarios
 
 ---
 
@@ -80,62 +78,66 @@ File:
 
 `tb_divider_robustness.vhd`
 
-The testbench extends verification beyond arithmetic corner cases and focuses on DUT robustness.
+The testbench verifies:
 
-Features:
+* Maximum input conditions
+* Reset assertion during active division
+* Recovery after reset
 
-* Quotient-width boundary verification
-* Maximum divisor verification
-* Dividend-less-than-divisor boundary verification
-* Reset recovery testing during an active division operation
 
-Boundary scenarios include:
+### Divide-by-Zero Verification
 
-* Smallest non-zero quotient
-* Maximum supported quotient value
-* Maximum supported divisor value
-* Dividend smaller than divisor
+File:
 
-The reset recovery test verifies that an active division operation is correctly aborted and that the DUT can successfully process a new transaction after reset.
+`tb_divider_divbyzero.vhd`
+
+The testbench verifies:
+
+* Divide-by-zero detection
+* Defined error response behavior
+* Recovery from error transactions
 
 ---
 
 ## Verification Objectives
 
-The verification environment checks:
+The verification environment verifies:
 
 * Reset behavior
-* Start/ready handshake operation
+* Divider start and ready handshake
 * Quotient correctness
 * Multiple sequential transactions
-* Arithmetic corner-case scenarios
-* Quotient-width boundary conditions
-* Divisor boundary conditions
-* Reset recovery during an active division operation
-* Automated result reporting through a reusable scoreboard
+* Reference-model based checking
+* Scoreboard-based result tracking
+* Boundary and corner-case scenarios
+* Reset recovery during active operation
+* Divide-by-zero handling
+* Error response verification
 
 ---
 
 ## Learning Outcome
 
-This project demonstrates the progression from simple directed verification toward a structured verification environment.
+This project demonstrates the evolution from basic directed verification toward a structured verification environment.
 
 The verification flow introduces:
 
-* Reference-model based checking
-* Reusable scoreboard concepts
-* Data-driven test execution
-* Corner-case verification
-* Robustness verification
+* Reference models for independent expected-value generation
+* Reusable checker procedures
+* Scoreboard concepts
+* Data-driven verification
+* Corner-case testing
+* Robustness testing
+* Error-condition verification
 
 The testbench architecture separates:
 
-* DUT interaction
-* Expected-result generation
+* Transaction generation
+* Expected behavior definition
+* DUT observation
 * Result checking
-* Verification scenarios
 
-This separation improves scalability and maintainability while providing a foundation for future verification concepts such as transaction abstraction, BFMs, and protocol verification.
+This structure provides a foundation for future verification concepts such as transaction-level modeling, BFMs, protocol verification, and regression environments.
 
 ---
 

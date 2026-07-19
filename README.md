@@ -67,18 +67,19 @@ This project demonstrates the evolution from basic directed verification to scal
 
 ### Project 2 - Sequential Truncated Restoring Divider
 
-The verification environment uses reference models, scoreboards, and data-driven stimulus techniques to verify a sequential divider implementation.
+The divider verification environment evolved from reference-model checking into a structured scoreboard-based verification flow.
+
+The environment verifies arithmetic correctness, boundary conditions, reset recovery, and error handling scenarios.
 
 #### Achievements
 
-* Implemented reference-model based verification
-* Added automatic expected-result generation
-* Implemented mini scoreboard infrastructure
-* Added pass/fail tracking and simulation summaries
-* Introduced data-driven test vector execution
-* Added arithmetic corner-case verification
-* Added robustness verification
-* Verified reset recovery behavior during active operations
+- Reference-model based verification implemented
+- Reusable scoreboard infrastructure created
+- Automated pass/fail reporting added
+- Corner-case verification introduced
+- Robustness testing performed
+- Divide-by-zero handling verified
+- Multiple checker paths implemented for normal and error transactions
 
 #### Verification Concepts Introduced
 
